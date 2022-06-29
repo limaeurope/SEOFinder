@@ -6,16 +6,10 @@
     <ClCompile Include="Src\Element_SolidLink.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="$(ACDevKitModules)\Geometry\Win\GeometryImp.lib">
-      <Filter>Libs</Filter>
-    </Library>
     <Library Include="$(ACDevKitModules)\GSRoot\Win\GSRootImp.lib">
       <Filter>Libs</Filter>
     </Library>
     <Library Include="$(ACDevKitModules)\GSUtils\Win\GSUtilsImp.lib">
-      <Filter>Libs</Filter>
-    </Library>
-    <Library Include="$(ACDevKitModules)\GXImageBase\Win\GXImageBaseImp.lib">
       <Filter>Libs</Filter>
     </Library>
     <Library Include="$(ACDevKitModules)\InputOutput\Win\InputOutputImp.lib">
@@ -24,19 +18,7 @@
     <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <Filter>Libs</Filter>
     </Library>
-    <Library Include="$(ACDevKitModules)\UCLib\Win\UCImp.lib">
-      <Filter>Libs</Filter>
-    </Library>
-    <Library Include="$(ACDevKitModules)\VectorImage\Win\VectorImageImp.lib">
-      <Filter>Libs</Filter>
-    </Library>
     <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
-      <Filter>Libs</Filter>
-    </Library>
-    <Library Include="$(ACDevKitModules)\DGLib\Win\DGImp.lib">
-      <Filter>Libs</Filter>
-    </Library>
-    <Library Include="$(ACDevKitModules)\BuiltInLibrary\Win\BuiltInLibraryImp.LIB">
       <Filter>Libs</Filter>
     </Library>
   </ItemGroup>

@@ -14,7 +14,7 @@
 #include	"ACAPinc.h"					// also includes APIdefs.h
 #include	"APICommon.h"
 
-#include	"Element_Test.h"
+#include	"SEOFinder.h"
 
 
 // ------------------------------ Constants ------------------------------------
