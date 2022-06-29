@@ -235,3 +235,75 @@ void Do_SolidLink_Operators (void)
 		WriteReport (str);
 	}
 }		/* Do_SolidLink_Operators */
+
+void GetSEOElements(void)
+{
+	GSErrCode				err;
+	API_SelectionInfo		selectionInfo;
+	GS::Array<API_Neig>		selNeigs;
+	API_Element				element;
+	GS::Array<API_Guid>		guid_Targets, guid_Operators;
+	API_Neig				_neig;
+
+	err = ACAPI_Selection_Get(&selectionInfo, &selNeigs, false);
+	if (err == APIERR_NOSEL || selectionInfo.typeID == API_SelEmpty) {
+		ACAPI_WriteReport("Nothing is selected", true);
+		return;
+	}
+
+	if (err != APIERR_NOSEL && err != NoError) {
+		ACAPI_WriteReport("Error in ACAPI_Selection_Get: %s", true, ErrID_To_Name(err));
+		return;
+	}
+
+	err = ACAPI_Element_Select(selNeigs, false);		//Empty selection
+
+	GS::Array<API_Neig>		neigS{};
+
+	for (Int32 i = 0; i < selectionInfo.sel_nElem; i++) {
+		BNZeroMemory(&element, sizeof(API_Element));
+		element.header.guid = selNeigs[i].guid;
+		err = ACAPI_Element_Get(&element);
+		if (err != NoError) {
+			break;
+		}
+
+		err = ACAPI_Element_SolidLink_GetTargets(element.header.guid, &guid_Targets);
+
+		err = ACAPI_Element_SolidLink_GetOperators(element.header.guid, &guid_Operators);
+
+		if (guid_Targets.GetSize() > 0 || guid_Operators.GetSize() > 0)
+			neigS.Push(selNeigs[i]);
+
+		for (const auto& guidTarget : guid_Targets) {
+			BNZeroMemory(&element, sizeof(API_Element));
+			element.header.guid = guidTarget;
+
+			err = ACAPI_Element_Get(&element);
+
+			_neig.guid = element.header.guid;
+
+			neigS.Push(_neig);
+		}
+
+		for (const auto& guidOperator : guid_Operators) {
+			BNZeroMemory(&element, sizeof(API_Element));
+			element.header.guid = guidOperator;
+
+			err = ACAPI_Element_Get(&element);
+
+			_neig.guid = element.header.guid;
+
+			neigS.Push(_neig);
+		}
+
+		//for (const auto& _guid : gResult) {
+		//	ACAPI_Element_SolidLink_GetOperation(guidTarget, guid_Operator, &operation);
+		//	ACAPI_Element_SolidLink_GetFlags(guidTarget, guid_Operator, &linkFlags);
+		//	ACAPI_Element_SolidLink_GetTime(guidTarget, guid_Operator, &linkTime, &linkSubTime);
+		//}
+	}
+
+	err = ACAPI_Element_Select(neigS, true);
+}		/* GetSEOElements */
+
