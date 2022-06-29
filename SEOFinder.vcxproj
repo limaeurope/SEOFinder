@@ -130,29 +130,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Src\APICommon.h" />
-    <ClInclude Include="Src\APIEnvir.h" />
-    <ClInclude Include="Src\FindByGuid.hpp" />
-    <ClInclude Include="Src\Dumper.h" />
-    <ClInclude Include="Src\Element_Test.h" />
-    <ClInclude Include="Src\APISpeedTest.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Src\APICommon.c" />
     <ClCompile Include="Src\$(ProjectName).cpp" />
-    <ClCompile Include="Src\Element_Trim.cpp" />
-    <ClCompile Include="Src\Element_Tools.cpp" />
-    <ClCompile Include="Src\Element_Tips.cpp" />
+    <ClCompile Include="Src\APICommon.c" />
     <ClCompile Include="Src\Element_SolidLink.cpp" />
-    <ClCompile Include="Src\Element_Snippets.cpp" />
-    <ClCompile Include="Src\Element_Set.cpp" />
-    <ClCompile Include="Src\Element_Modify.cpp" />
-    <ClCompile Include="Src\Element_Hotlink.cpp" />
-    <ClCompile Include="Src\Element_Edit.cpp" />
-    <ClCompile Include="Src\Element_Basics.cpp" />
-    <ClCompile Include="Src\Element_Batch_Create.cpp" />
-    <ClCompile Include="Src\Dumper.cpp" />
-    <ClCompile Include="Src\APISpeedTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RINT\$(ProjectName).grc">
@@ -193,13 +173,7 @@
     <Library Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
       <FileType>Document</FileType>
     </Library>
-    <Library Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Include="$(ACDevKitModules)\BuiltInLibrary\Win\BuiltInLibraryImp.LIB">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Include="$(ACDevKitModules)\DGLib\Win\DGImp.lib">
+	<Library Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
       <FileType>Document</FileType>
     </Library>
     <Library Include="$(ACDevKitModules)\GSRoot\Win\GSRootImp.lib">
@@ -214,18 +188,9 @@
     <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <FileType>Document</FileType>
     </Library>
-    <Library Include="$(ACDevKitModules)\Geometry\Win\GeometryImp.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Include="$(ACDevKitModules)\UCLib\Win\UCImp.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Include="$(ACDevKitModules)\GXImageBase\Win\GXImageBaseImp.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Include="$(ACDevKitModules)\VectorImage\Win\VectorImageImp.lib">
-      <FileType>Document</FileType>
-    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\APICommon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Src\$(ProjectName).cpp" />
+    <ClCompile Include="Src\APICommon.c" />
+    <ClCompile Include="Src\Element_SolidLink.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="$(ACDevKitModules)\Geometry\Win\GeometryImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\GSRoot\Win\GSRootImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\GSUtils\Win\GSUtilsImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\GXImageBase\Win\GXImageBaseImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\InputOutput\Win\InputOutputImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\UCLib\Win\UCImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\VectorImage\Win\VectorImageImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\DGLib\Win\DGImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\BuiltInLibrary\Win\BuiltInLibraryImp.LIB">
+      <Filter>Libs</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="RINT\$(ProjectName).grc" />
+    <CustomBuild Include="RFIX\$(ProjectName)Fix.grc" />
+    <CustomBuild Include="RFIX.WIN\$(ProjectName).rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{c95d90ee-2a44-42a0-af6c-a1d36151215a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\APICommon.h" />
+  </ItemGroup>
+</Project>
