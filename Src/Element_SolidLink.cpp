@@ -256,7 +256,7 @@ void GetSEOElements(void)
 		return;
 	}
 
-	err = ACAPI_Element_Select(selNeigs, false);		//Empty selection
+	err = ACAPI_Element_Select(selNeigs, false);		//Empty selection 
 
 	GS::Array<API_Neig>		neigS{};
 
