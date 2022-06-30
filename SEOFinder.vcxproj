@@ -49,9 +49,17 @@
     <ACDevKitSupport>$(ACDevKit)\Support</ACDevKitSupport>
     <ACDevKitModules>$(ACDevKitSupport)\Modules</ACDevKitModules>
   </PropertyGroup>
-  <PropertyGroup Label="Globals">
+  <PropertyGroup Condition="'$(ACVersion)'=='24'" Label="Globals">
     <ProjectGuid>{57C427C8-56A0-4CC2-96B7-ECDC64698CF2}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(ACVersion)'=='25'" Label="Globals">
+    <ProjectGuid>{57C427C8-56A0-4CC2-96B7-ECDC64698CF2}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(ACVersion)'=='26'" Label="Globals">
+    <ProjectGuid>{57C427C8-56A0-4CC2-96B7-ECDC64698CF2}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)'=='Debug 24'" Label="Configuration">
@@ -68,15 +76,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 25'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 26'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 26'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -102,18 +110,18 @@
   <PropertyGroup>
     <IntDir>Build\$(Configuration)\</IntDir>
     <OutDir>Build\$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)_$(ACVersion)</TargetName>
     <TargetExt>.apx</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 24'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 24'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ACDevKitSupport)\Inc;$(ACDevKitModules)\GSRoot;$(ACDevKitModules)\RS;$(ACDevKitModules)\GSUtils;$(ACDevKitModules)\DGLib;$(ACDevKitModules)\Geometry;$(ACDevKitModules)\InputOutput;$(ACDevKitModules)\UCLib;$(ACDevKitModules)\GXImageBase;$(ACDevKitModules)\Pattern;$(ACDevKitModules)\BuiltInLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ACDevKitSupport)\Inc;$(ACDevKitModules)\GSRoot;$(ACDevKitModules)\RS;$(ACDevKitModules)\InputOutput;$(ACDevKitModules)\GSUtils</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
@@ -134,13 +142,14 @@
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <OutputFile>$(OutDir)$(ProjectName).apx</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)_$(ACVersion).apx</OutputFile>
       <SubSystem>NotSet</SubSystem>
       <EntryPointSymbol>DllMainEntry</EntryPointSymbol>
       <TargetMachine>MachineX64</TargetMachine>
       <ImportLibrary>
       </ImportLibrary>
       <LinkDLL>true</LinkDLL>
+      <AdditionalOptions>/export:GetExportedFuncAddrs,%401 /export:SetImportedFuncAddrs,%402 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug 24'">
@@ -178,7 +187,6 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
-      <AdditionalOptions>/export:GetExportedFuncAddrs,%401 /export:SetImportedFuncAddrs,%402 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release 25'">
@@ -186,10 +194,10 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>WIN32;NDEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug 26'">
@@ -297,22 +305,22 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <Library Condition="'$(Configuration)'=='Release 24'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
-      <FileType>Document</FileType>
-    </Library>
     <Library Condition="'$(Configuration)'=='Debug 24'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
       <FileType>Document</FileType>
     </Library>
-    <Library Condition="'$(Configuration)'=='Release 25'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
+    <Library Condition="'$(Configuration)'=='Release 24'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
       <FileType>Document</FileType>
     </Library>
     <Library Condition="'$(Configuration)'=='Debug 25'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
       <FileType>Document</FileType>
     </Library>
-    <Library Condition="'$(Configuration)'=='Release 26'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
+    <Library Condition="'$(Configuration)'=='Release 25'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
       <FileType>Document</FileType>
     </Library>
     <Library Condition="'$(Configuration)'=='Debug 26'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
+      <FileType>Document</FileType>
+    </Library>
+    <Library Condition="'$(Configuration)'=='Release 26'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
       <FileType>Document</FileType>
     </Library>
     <Library Include="$(ACDevKitModules)\GSRoot\Win\GSRootImp.lib">
@@ -327,10 +335,7 @@
     <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <FileType>Document</FileType>
     </Library>
-	<Library Condition="'$(Configuration)'=='Debug 25'" Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
-      <FileType>Document</FileType>
-    </Library>
-	<Library Condition="'$(Configuration)'=='Release 25'" Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
+    <Library Condition="'$(ACVersion)'=='25'" Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
       <FileType>Document</FileType>
     </Library>
   </ItemGroup>

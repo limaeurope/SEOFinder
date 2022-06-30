@@ -45,11 +45,6 @@ GSErrCode __ACENV_CALL ElementsSolidOperation (const API_MenuParams *menuParams)
 
 			switch (menuParams->menuItemRef.itemIndex) {
 				case 1:		GetSEOElements();					break;
-				//case 2:		Do_SolidLink_Create ();				break;
-				//case 3:		Do_SolidLink_Remove ();				break;
-				//case 4:		Do_SolidLink_Targets ();			break;
-				//case 5:		Do_SolidLink_Operators ();			break;
-				//case 6:		Do_SolidOperation_Create ();		break;
 
 				default:										break;
 			}
