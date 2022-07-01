@@ -16,5 +16,5 @@ void	Do_SolidLink_Create (void);
 void	Do_SolidLink_Remove (void);
 void	Do_SolidLink_Targets (void);
 void	Do_SolidLink_Operators (void);
-void	GetSEOElements (void);
+void	GetSEOElements (bool isBoundingBoxConsidered);
 #endif

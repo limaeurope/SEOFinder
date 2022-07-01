@@ -44,7 +44,8 @@ GSErrCode __ACENV_CALL ElementsSolidOperation (const API_MenuParams *menuParams)
 		[&] () -> GSErrCode {
 
 			switch (menuParams->menuItemRef.itemIndex) {
-				case 1:		GetSEOElements();					break;
+				case 1:		GetSEOElements(false);				break;
+				case 2:		GetSEOElements(true);				break;
 
 				default:										break;
 			}

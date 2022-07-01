@@ -18,8 +18,8 @@
     <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <Filter>Libs</Filter>
     </Library>
-    <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib" />
     <Library Include="$(ACDevKitModules)\RS\Win\RSImp.lib" />
+    <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RINT\$(ProjectName).grc" />
@@ -33,5 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\APICommon.h" />
+    <ClInclude Include="Src\SEOFinder.h" />
   </ItemGroup>
 </Project>
