@@ -28,21 +28,27 @@
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 24'">
     <ACVersion>24</ACVersion>
+    <BuildType>Debug</BuildType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 24'">
     <ACVersion>24</ACVersion>
+    <BuildType>Release</BuildType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 25'">
     <ACVersion>25</ACVersion>
+    <BuildType>Debug</BuildType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 25'">
     <ACVersion>25</ACVersion>
+    <BuildType>Release</BuildType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 26'">
     <ACVersion>26</ACVersion>
+    <BuildType>Debug</BuildType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 26'">
     <ACVersion>26</ACVersion>
+    <BuildType>Release</BuildType>
   </PropertyGroup>
   <PropertyGroup Label="UserMacros">
     <ACDevKit>..\ArchiCAD_API\API Development Kit $(ACVersion)</ACDevKit>
@@ -80,31 +86,19 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug 26'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release 26'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Debug 24'">
+  <ImportGroup Label="PropertySheets" Condition="'$(BuildType)'=='Debug'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Release 24'">
-    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Debug 25'">
-    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Release 25'">
-    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Debug 26'">
-    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)'=='Release 26'">
+  <ImportGroup Label="PropertySheets" Condition="'$(BuildType)'=='Release'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
   <PropertyGroup>
@@ -121,6 +115,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
+	  <PreprocessorDefinitions>ACVER=$(ACVersion);WIN32;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ACDevKitSupport)\Inc;$(ACDevKitModules)\GSRoot;$(ACDevKitModules)\RS;$(ACDevKitModules)\InputOutput;$(ACDevKitModules)\GSUtils</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -155,7 +150,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug 24'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -168,7 +163,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release 24'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;NDEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -179,7 +174,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug 25'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -192,7 +187,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release 25'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;NDEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
@@ -203,7 +198,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug 26'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -216,7 +211,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release 26'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;NDEBUG;WINDOWS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -232,95 +227,36 @@
   <ItemGroup>
     <CustomBuild Include="RINT\$(ProjectName).grc">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)'=='Debug 24'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 24'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 24'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 24'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 24'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 24'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Debug 25'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 25'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 25'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 25'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 25'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 25'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Debug 26'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 26'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 26'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 26'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 26'">Compiling the localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 26'">$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
+      <Command Condition="'$(BuildType)'=='Debug'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
+      <Command Condition="'$(BuildType)'=='Release'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RINT\$(ProjectName).grc" -o "$(OutDir)\RO\$(ProjectName).grc.rc2"</Command>
+      <Message>Compiling the localized GRC file...</Message>
+      <Outputs>$(OutDir)\RO\$(ProjectName).grc.rc2;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RFIX\$(ProjectName)Fix.grc">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)'=='Debug 24'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 24'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 24'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 24'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 24'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 24'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Debug 25'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 25'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 25'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 25'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 25'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 25'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Debug 26'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 26'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 26'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)'=='Release 26'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 26'">Compiling the non-localized GRC file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 26'">$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
+      <Command Condition="'$(BuildType)'=='Debug'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -D _DEBUG -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
+      <Command Condition="'$(BuildType)'=='Release'">"$(ACDevKitSupport)\Tools\Win\ResConv.exe" -m r -D WINDOWS -T W -q utf8 1252 -i "RFIX\$(ProjectName)Fix.grc" -p "RFIX\Images" -o "$(OutDir)\RO\$(ProjectName)Fix.grc.rc2"</Command>
+      <Message>Compiling the non-localized GRC file...</Message>
+      <Outputs>$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RFIX.WIN\$(ProjectName).rc2">
       <FileType>RC</FileType>
-      <Command Condition="'$(Configuration)'=='Debug 24'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /d _DEBUG /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 24'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 24'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Debug 24'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)'=='Release 24'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 24'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 24'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Release 24'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)'=='Debug 25'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /d _DEBUG /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 25'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 25'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Debug 25'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)'=='Release 25'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 25'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 25'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Release 25'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)'=='Debug 26'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /d _DEBUG /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Debug 26'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Debug 26'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Debug 26'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)'=='Release 26'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
-      <Message Condition="'$(Configuration)'=='Release 26'">Compiling the RC2 file...</Message>
-      <Outputs Condition="'$(Configuration)'=='Release 26'">$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)'=='Release 26'">$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(BuildType)'=='Debug'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /d _DEBUG /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
+      <Command Condition="'$(BuildType)'=='Release'">rc /i "$(ACDevKitSupport)\Inc" /i "$(ACDevKitModules)\DGLib" /i "$(OutDir)\RO" /fo"$(OutDir)$(ProjectName).res" "RFIX.WIN\$(ProjectName).rc2"</Command>
+      <Message>Compiling the RC2 file...</Message>
+      <Outputs>$(OutDir)$(ProjectName).res;%(Outputs)</Outputs>
+      <AdditionalInputs>$(OutDir)\RO\$(ProjectName).grc.rc2;$(OutDir)\RO\$(ProjectName)Fix.grc.rc2;%(AdditionalInputs)</AdditionalInputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <Library Condition="'$(Configuration)'=='Debug 24'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
+    <Library Condition="'$(BuildType)'=='Debug'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
       <FileType>Document</FileType>
     </Library>
-    <Library Condition="'$(Configuration)'=='Release 24'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Condition="'$(Configuration)'=='Debug 25'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Condition="'$(Configuration)'=='Release 25'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Condition="'$(Configuration)'=='Debug 26'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
-      <FileType>Document</FileType>
-    </Library>
-    <Library Condition="'$(Configuration)'=='Release 26'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
+    <Library Condition="'$(BuildType)'=='Release'" Include="$(ACDevKitSupport)\Lib\Win\ACAP_STAT.lib">
       <FileType>Document</FileType>
     </Library>
     <Library Include="$(ACDevKitModules)\GSRoot\Win\GSRootImp.lib">
@@ -332,10 +268,16 @@
     <Library Include="$(ACDevKitModules)\InputOutput\Win\InputOutputImp.lib">
       <FileType>Document</FileType>
     </Library>
-    <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
+    <Library Condition="'$(ACVersion)'=='24'" Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
+      <FileType>Document</FileType>
+    </Library>
+    <Library Condition="'$(ACVersion)'=='25'" Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <FileType>Document</FileType>
     </Library>
     <Library Condition="'$(ACVersion)'=='25'" Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
+      <FileType>Document</FileType>
+    </Library>
+    <Library Condition="'$(ACVersion)'=='26'" Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
       <FileType>Document</FileType>
     </Library>
   </ItemGroup>

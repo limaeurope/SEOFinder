@@ -18,8 +18,12 @@
     <Library Include="$(ACDevKitModules)\ObjectDatabase\Win\ObjectDatabaseImp.LIB">
       <Filter>Libs</Filter>
     </Library>
-    <Library Include="$(ACDevKitModules)\RS\Win\RSImp.lib" />
-    <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib" />
+    <Library Include="$(ACDevKitSupport)\Lib\Win\ACAP_STATD.lib">
+      <Filter>Libs</Filter>
+    </Library>
+    <Library Include="$(ACDevKitModules)\RS\Win\RSImp.lib">
+      <Filter>Libs</Filter>
+    </Library>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RINT\$(ProjectName).grc" />
