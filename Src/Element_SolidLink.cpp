@@ -263,8 +263,6 @@ void GetSEOElements(bool isBoundingBoxConsidered)
 	GS::Array<API_Guid>		guid_Targets, guid_Operators;
 	API_Neig				_neig;
 
-	//bool isBoundingBoxConsidered = true;
-
 	err = ACAPI_Selection_Get(&selectionInfo, &selNeigs, false);
 	if (err == APIERR_NOSEL || selectionInfo.typeID == API_SelEmpty) {
 		ACAPI_WriteReport("Nothing is selected", true);

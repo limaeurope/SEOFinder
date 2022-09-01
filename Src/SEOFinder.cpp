@@ -47,7 +47,7 @@ GSErrCode __ACENV_CALL ElementsSolidOperation (const API_MenuParams *menuParams)
 				case 1:		GetSEOElements(false);				break;
 				case 2:		GetSEOElements(true);				break;
 
-				default:										break;
+				default:														break;
 			}
 
 			return NoError;
