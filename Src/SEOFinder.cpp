@@ -33,21 +33,17 @@ static API_Guid	gLastRenFiltGuid = APINULLGuid;
 
 // ---------------------------------- Prototypes -------------------------------
 
-
-// -----------------------------------------------------------------------------
-// Elements: Solid Operations Functions
-// -----------------------------------------------------------------------------
-
 GSErrCode __ACENV_CALL ElementsSolidOperation (const API_MenuParams *menuParams)
 {
-	return ACAPI_CallUndoableCommand ("Element Test API Function",
+	return ACAPI_CallUndoableCommand ("SEO Finder",
 		[&] () -> GSErrCode {
 
 			switch (menuParams->menuItemRef.itemIndex) {
 				case 1:		GetSEOElements(false);				break;
 				case 2:		GetSEOElements(true);				break;
+				case 3:		SelectNextSEOElement();				break;
 
-				default:														break;
+				default:										break;
 			}
 
 			return NoError;
@@ -96,6 +92,7 @@ GSErrCode __ACENV_CALL	Initialize (void)
 	//
 
 	err = ACAPI_Install_MenuHandler (32506, ElementsSolidOperation);
+	SetMenuClickability();
 
 	return err;
 }		/* Initialize */
